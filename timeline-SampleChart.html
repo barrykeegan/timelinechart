@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'RowLabel' });
+        dataTable.addColumn({ type: 'string', id: 'Company' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'ENTITY 1A', 'ENTITY 1A', new Date(2014, 2, 18), new Date(2017, 9, 19) ],
+          [ 'ENTITY 1A', 'ENTITY 1B', new Date(2017, 9, 19), new Date(2018, 4, 22) ],
+          [ 'ENTITY 2A', 'ENTITY 2A', new Date(2015, 7, 1), new Date(2019, 10, 10) ],
+          [ 'ENTITY 3A', 'ENTITY 3A', new Date(2013, 1, 28), new Date(2015, 8, 11) ],
+          [ 'ENTITY 3A', 'ENTITY 3B', new Date(2015, 8, 11), new Date(2016, 11, 25) ],
+          [ 'ENTITY 3A', 'ENTITY 3C', new Date(2016, 11, 25), new Date(2019, 6, 21) ],
+          [ 'ENTITY 4', 'ENTITY 4', new Date(2016, 2, 18), new Date(2020, 4, 13) ],
+          [ 'ENTITY 5', 'ENTITY 5', new Date(2017, 3, 1), new Date(2020, 9, 21) ],
+        ]);
+
+        var options = {
+          timeline: { showRowLabels: false },
+          colors: ['c7e8ac', 'a3d977', 'c1e4f7', 'ffbbb1', 'ff8f80', 'c92d39', 'ffdba9', 'd1bcd2', ],
+        };
+        chart.draw(dataTable, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="timeline" style="height: 100%;"></div>
+  </body>
+</html>
